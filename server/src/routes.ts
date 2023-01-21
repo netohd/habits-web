@@ -33,4 +33,35 @@ export async function appRoutes(app: FastifyInstance) {
         })
 
     })
+
+    app.get('/day', async (request) => {
+        const getDayParams = z.object({
+            date: z.coerce.date()
+        })
+
+        const { date } = getDayParams.parse(request.query)
+
+        const parsedDate = dayjs(date).startOf('day')
+        const weekDay = parsedDate.get('day')
+
+        // Todos hábitos possíveis
+        // Hábitos que já foram completados
+
+        const possibleHabits = await prisma.habit.findMany({
+            where: {
+                created_at: {
+                    lte: date,
+                },
+                weekDays: {
+                    some: {
+                        week_day: weekDay,
+                    }
+                }
+            }
+        })
+        
+        return {
+            possibleHabits,
+        }
+    })
 }
