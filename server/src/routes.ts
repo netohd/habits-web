@@ -79,10 +79,10 @@ export async function appRoutes(app: FastifyInstance) {
     }
   })
 
-  // Marcar / desmarcar hábito
-
   app.patch('/habits/:id/toggle', async (request) => {
     // id = route param = parâmetro de identificação
+
+    // Completar / não completar hábito
 
     const toggleHabitParams = z.object({
       id: z.string().uuid(),
