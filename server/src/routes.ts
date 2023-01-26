@@ -131,4 +131,32 @@ export async function appRoutes(app: FastifyInstance) {
       })
     }
   })
+
+  app.get('/summary', async (request) => {
+    /**
+     * retorna resumo (vetor de objetos) ex
+     *  [ { date: 17/01, amout: 5, completed: 1}, {}, {} ] 
+     */
+    const summary = await prisma.$queryRaw`
+      SELECT 
+        D.id, 
+        D.date,
+        (
+          SELECT 
+            cast(count(*) as float)
+          FROM day_habits DH
+          WHERE DH.day_id = D.id
+        ) as completed, /* Hábitos completados */
+        (
+          SELECT
+            cast(count(*) as float)
+          FROM habit_week_days HWD
+          WHERE
+            HWD.week_day = cast(strftime('%w', D.date/1000.0, 'unixepoch') as int)
+        ) as amount /* Hábitos disponíveis */
+      FROM days D
+    `
+
+    return summary
+  })
 }
