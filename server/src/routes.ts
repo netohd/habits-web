@@ -99,7 +99,7 @@ export async function appRoutes(app: FastifyInstance) {
     })
 
     if (!day) {
-    // Id cai ser criado com automaticamente
+    // Id vai ser criado automaticamente
       day = await prisma.day.create({
         data: {
           date: today,
