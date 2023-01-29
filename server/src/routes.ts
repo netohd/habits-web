@@ -35,6 +35,7 @@ export async function appRoutes(app: FastifyInstance) {
   })
 
   app.get('/day', async (request) => {
+  // Rota que retorna hábitos de um dia específico
     const getDayParams = z.object({
       date: z.coerce.date()
     })
