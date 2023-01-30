@@ -26,6 +26,7 @@ app.register(appRoutes)
 
 app.listen({
     port: 3333,
+// Mostra mensagem enquando sv estiver ligado
 }).then(() => {
     console.log('HTTP Server running!')
 })
