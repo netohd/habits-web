@@ -5,6 +5,7 @@ const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
 const summaryDates = generateDatesFromYearBeginning()
 const minimumSummaryDateSize = 18 * 7 // 18 semanas
+// Qtde de dias que ficarão com quadro "aceso" em branco/roxo
 const amountOfDaysToFill = minimumSummaryDateSize - summaryDates.length
 
 export function SummaryTable() {
