@@ -12,10 +12,12 @@ export function HabitDay(props: HabitDayProps) {
 
   return (
     <Popover.Root>
-      {/* clsx é utilizado para passar atributos css e criar condicionais
-        * para cor de acordo com porcentagem
-        * ==> npm install clsx
-        */}
+      {
+      /** clsx é utilizado para passar atributos css e criar condicionais
+       * para cor de acordo com porcentagem
+       * ==> npm install clsx
+       */  
+      }
       <Popover.Trigger 
         className={clsx('bg-zinc-900 w-10 h-10 border-2 border-zinc-800 rounded-lg', {
           'bg-zinc-900 border-zinc-800': completedPercentage === 0,
