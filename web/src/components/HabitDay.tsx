@@ -13,8 +13,8 @@ interface HabitDayProps {
 /** Modal que aparece quando se clica em algum dos quadros do sumário (dias)
  * Utilização do radix (lib) para estilização e recurso de acessibilidade
  */
-export function HabitDay(props: HabitDayProps) {
-  const completedPercentage = Math.round((props.completed / props.amount) * 100)
+export function HabitDay({ completed = 0, amount = 0 }) {
+  const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0
 
   return (
     <Popover.Root>
