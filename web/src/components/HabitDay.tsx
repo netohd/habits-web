@@ -6,15 +6,18 @@ import { ProgressBar } from './ProgressBar'
 
 interface HabitDayProps {
   date: Date
-  completed?: number
   amount?: number
+  completed?: number
 }
 
 /** Modal que aparece quando se clica em algum dos quadros do sumário (dias)
  * Utilização do radix (lib) para estilização e recurso de acessibilidade
  */
-export function HabitDay({ completed = 0, amount = 0 }) {
+export function HabitDay({ completed = 0, amount = 0, date }) {
   const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0
+
+  const dayAndMonth = dayjs(date).format('DD/MM')
+  const dayOfWeek = dayjs(date).format('dddd')
 
   return (
     <Popover.Root>
@@ -41,8 +44,8 @@ export function HabitDay({ completed = 0, amount = 0 }) {
       }
       <Popover.Portal>
         <Popover.Content className='min-w-[320px] p-6 rounded-2xl bg-zinc-900 flex flex-col'>
-          <span className='font-semibold text-zinc-400'>terça-feira</span>
-          <span className='mt-1 font-extrabold leading-tight text-3xl'>17/01</span>
+          <span className='font-semibold text-zinc-400'>dayOfWeek</span>
+          <span className='mt-1 font-extrabold leading-tight text-3xl'>{dayAndMonth}</span>
 
           <ProgressBar progress={completedPercentage} />
 
