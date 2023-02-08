@@ -5,8 +5,9 @@ import { Check } from 'phosphor-react';
 import { ProgressBar } from './ProgressBar'
 
 interface HabitDayProps {
-  completed: number
-  amount: number
+  date: Date
+  completed?: number
+  amount?: number
 }
 
 /** Modal que aparece quando se clica em algum dos quadros do sumário (dias)
