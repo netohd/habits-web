@@ -33,8 +33,11 @@ export function HabitDay(props: HabitDayProps) {
           'bg-violet-500 border-violet-400': completedPercentage >= 80,
         })}
       />
-      {/* Recurso de popup utilizado através da lib radix 
-      npm install @radix-ui/react-popover*/}
+      {
+        /** Recurso de popup utilizado através da lib radix 
+         * => npm install @radix-ui/react-popover
+         */
+      }
       <Popover.Portal>
         <Popover.Content className='min-w-[320px] p-6 rounded-2xl bg-zinc-900 flex flex-col'>
           <span className='font-semibold text-zinc-400'>terça-feira</span>
@@ -46,7 +49,7 @@ export function HabitDay(props: HabitDayProps) {
             <Checkbox.Root className='flex items-center gap-3 group'>
               <div className='h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500'>
                 <Checkbox.Indicator>
-                  <Check  size={20} className='text-white' />
+                  <Check size={20} className='text-white' />
                 </Checkbox.Indicator>
               </div>
               <span className='font-semibold text-xl text-white leading-tight group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400'>
