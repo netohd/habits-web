@@ -12,9 +12,7 @@ export function NewHabitForm() {
   
   function createNewHabit(event: FormEvent) {
     event.preventDefault()
-    console.log(weekDays)
-    console.log(title)
-
+    console.log(title, weekDays)
   }
 
   // Soluciona o problema de ter que selecionar/deselecionar dias
