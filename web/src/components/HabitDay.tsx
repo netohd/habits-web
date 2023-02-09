@@ -15,7 +15,7 @@ interface HabitDayProps {
 /** Modal que aparece quando se clica em algum dos quadros do sumário (dias)
  * Utilização do radix (lib) para estilização e recurso de acessibilidade
  */
-export function HabitDay({ completed = 0, amount = 0, date }) {
+export function HabitDay({ completed = 0, amount = 0, date }: HabitDayProps) {
   const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0
 
   const dayAndMonth = dayjs(date).format('DD/MM')
