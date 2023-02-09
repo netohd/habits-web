@@ -1,12 +1,21 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { Check } from 'phosphor-react';
 import { useEffect } from 'react';
+import { api } from '../lib/axios';
 
+interface HabitListProps {
+  date: Date
+}
 
-export function HabitsList() {
-  
+export function HabitsList({ date }: HabitListProps ) {
   useEffect(() => {
-    console.log('carregou')
+    api.get('day', {
+      params: {
+        date: date.toISOString(),
+      }
+    }).then(response => {
+      console.log(response.data)
+    })
   }, [])
   
   return (
