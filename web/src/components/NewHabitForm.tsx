@@ -53,7 +53,7 @@ export function NewHabitForm() {
         className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
         autoFocus 
         value={title}
-        // Toda vez que é digitado o valor no input vai anotar na var  Title
+        // Toda vez que é digitado o valor no input vai anotar na var Title
         onChange={event => setTitle(event.target.value)}
       />
 
