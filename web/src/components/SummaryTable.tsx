@@ -19,7 +19,7 @@ type Summary = {
 
 export function SummaryTable() {
   const [summary, setSummary] = useState<Summary>([])
-
+  // Macete para executar somente uma vez a chamada (useEffect)
   useEffect(() => {
     api.get('summary').then(response => {
       setSummary(response.data)
