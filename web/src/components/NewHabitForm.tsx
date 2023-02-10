@@ -26,7 +26,7 @@ export function NewHabitForm() {
     // Esvazia campos após criação
     setTitle('')
     setWeekDays([])
-    alert('Hábito foi criado ')
+    alert('Hábito foi criado com sucesso')
   }
 
   // Soluciona o problema de ter que selecionar/deselecionar dias
