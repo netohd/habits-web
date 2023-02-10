@@ -8,23 +8,23 @@ const availableWeekDays = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-f
 // Formulário de criação de novo hábito
 export function NewHabitForm() {
   // O estado é uma variável que consigo monitorar seu valor
-  const [title, setTitle] = useState('')
+  const [tittle, setTittle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
   
   async function createNewHabit(event: FormEvent) {
     event.preventDefault()
 
-    if (!title || weekDays.length === 0) {
+    if (!tittle || weekDays.length === 0) {
       return
     }
 
     await api.post('habits', {
-      title,
+      tittle,
       weekDays,
     })
 
     // Esvazia campos após criação
-    setTitle('')
+    setTittle('')
     setWeekDays([])
     alert('Hábito foi criado com sucesso')
   }
@@ -43,18 +43,18 @@ export function NewHabitForm() {
 
   return (
     <form onSubmit={createNewHabit} className="w-full flex flex-col mt-6">
-      <label htmlFor="title" className="font-semibold leading-tight">
+      <label htmlFor="tittle" className="font-semibold leading-tight">
         Qual seu comprometimento?
       </label>
 
       <input type="text"
-        id="title"
+        id="tittle"
         placeholder="ex.: Exercicios, dormir mais, etc.."
         className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-700 focus:ring-offset-2 focus:ring-offset-zinc-900"
         autoFocus 
-        value={title}
-        // Toda vez que é digitado o valor no input vai anotar na var Title
-        onChange={event => setTitle(event.target.value)}
+        value={tittle}
+        // Toda vez que é digitado o valor no input vai anotar na var Tittle
+        onChange={event => setTittle(event.target.value)}
       />
 
       <label htmlFor="" className="font-semibold leading-tight mt-4">
