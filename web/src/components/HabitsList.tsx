@@ -6,20 +6,20 @@ import { api } from '../lib/axios';
 
 interface HabitListProps {
   date: Date
+  onCompletedChanged: (completed: number) => void
 }
 
 interface HabitsInfo {
   possibleHabits: {
     id: string;
-    title: string;
+    tittle: string;
     created_at: string;
   }[],
   completedHabits: string[]
 }
 
-export function HabitsList({ date }: HabitListProps) {
+export function HabitsList({ date, onCompletedChanged }: HabitListProps) {
   const [habitsInfo, setHabitsInfo] = useState<HabitsInfo>()
-
 
   // Macete para executar chamada somente uma vez (useEffect)
   useEffect(() => {
@@ -48,6 +48,8 @@ export function HabitsList({ date }: HabitListProps) {
       possibleHabits: habitsInfo!.possibleHabits,
       completedHabits,
     })
+
+    onCompletedChanged(completedHabits.length)
   }
 
   const isDateInPast = dayjs(date).endOf('day').isBefore(new Date())
@@ -70,7 +72,7 @@ export function HabitsList({ date }: HabitListProps) {
               </Checkbox.Indicator>
             </div>
             <span className='font-semibold text-xl text-white leading-tight group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400'>
-              {habit.title}
+              {habit.tittle}
             </span>
           </Checkbox.Root>
         )
